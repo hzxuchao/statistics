@@ -22,7 +22,7 @@
 #
 #################################################
 
- #define posterior
+#define posterior
 posterior = function(theta, y, sigma){
    pdf = dt(theta, 1)
    for (i in 1:length(y)){
@@ -31,14 +31,14 @@ posterior = function(theta, y, sigma){
    pdf
 }
 
- #define envelope distribution
+#define envelope distribution
 envelope = function(theta, y.bar, sd){dnorm(theta, y.bar, sd)}
 
- #generate a random sample from Y
+#generate a random sample from Y
 set.seed(2012)
 y = rnorm(5, 2, 1)       
 
- #calculate the constant M
+#calculate the constant M
 grid = seq(-2, 5, 0.01)
 y.bar = mean(y)
 sd = sd(y)
@@ -47,7 +47,7 @@ post.density = posterior(grid, y, 1)
 M = max(post.density/env.density)
 env = M*env.density
 
- #draw samples
+#draw samples
 Nsim = 10^4
 theta = rep(0, Nsim)
 count = 0
@@ -62,7 +62,7 @@ while(count<Nsim){
    }
 }
 
- #plot results
+#plot results
 rej_rate = (attempts-Nsim)/attempts
 h = hist(theta, breaks=50, xlab=expression(theta), main="histogram of posterior samples")
 fudge = max(h$counts)/max(post.density)
@@ -70,5 +70,5 @@ lines(grid, fudge*env, lty=1)
 lines(grid, fudge*post.density, lty=2)
 legend("topleft", c("envelope","posterior"), lty=c(1,2), inset=0.05)
 
- #rejection rate
+#rejection rate
 rej_rate
