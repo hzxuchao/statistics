@@ -10,7 +10,7 @@
 #
 # Outputs:
 # 
-#   Plots of the likelihood, prior, and posterior
+#   Plots of probability of p.i with each individual value of p.d
 #
 # 8/17/2016 by Chao Xu
 #
