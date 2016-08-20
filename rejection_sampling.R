@@ -23,9 +23,11 @@
 #################################################
 
 #define posterior
-posterior = function(theta, y, sigma){
+posterior = function(theta, y, sigma)
+{
    pdf = dt(theta, 1)
-   for (i in 1:length(y)){
+   for (i in 1:length(y))
+   {
       pdf = pdf*dnorm(y[i], theta, sigma)
    }
    pdf
@@ -52,11 +54,13 @@ Nsim = 10^4
 theta = rep(0, Nsim)
 count = 0
 attempts = 0
-while(count<Nsim){
+while(count<Nsim)
+{
    attempts = attempts+1
    can = rnorm(1, y.bar, sd)
    p = posterior(can, y, 1)/(m*envelope(can, y.bar, sd))
-   if (runif(1)<p){
+   if (runif(1)<p)
+   {
       count = count+1
       theta[count] = can
    }
