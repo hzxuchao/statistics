@@ -34,7 +34,7 @@ posterior = function(theta, y, sigma)
 }
 
 #define envelope distribution
-envelope = function(theta, y.bar, sd){dnorm(theta, y.bar, sd)}
+envelope = function(theta, y.bar, sd) {dnorm(theta, y.bar, sd)}
 
 #generate a random sample from Y
 set.seed(2012)
